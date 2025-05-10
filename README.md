@@ -1,93 +1,78 @@
-#Conway's Game of Life with FPS and Population Graph
+# Conway's Game of Life with FPS and Population Graph
+
 This is an implementation of Conway's Game of Life, a cellular automaton devised by mathematician John Conway. The game simulates the evolution of cells on a grid based on simple rules that govern their birth, survival, and death. The project includes a graphical interface using Pygame and a real-time plot showing FPS and the current population using Matplotlib.
 
-##Features
-Interactive Grid: The grid allows you to interact with it by adding and removing cells. Cells can be toggled between live and dead states.
+## Features
 
-FPS and Population Graph: Real-time graphs that show the FPS (frames per second) and the population of live cells.
+- **Interactive Grid**: The grid allows you to interact with it by adding and removing cells. Cells can be toggled between live and dead states.
+- **FPS and Population Graph**: Real-time graphs that show the FPS (frames per second) and the population of live cells.
+- **Basic Controls**:
+  - **Space**: Start or pause the simulation.
+  - **N**: Advance the simulation by one step.
+  - **R**: Randomly populate the grid with live cells.
+  - **S**: Save the current pattern of live cells to a file.
+  - **L**: Load a saved pattern from a file.
+- **File I/O**: Supports saving and loading patterns in a file for persistence.
 
-Basic Controls:
+## Requirements
 
-Space: Start or pause the simulation.
+- Python 3.x
+- Pygame
+- Matplotlib
 
-N: Advance the simulation by one step.
+You can install the required libraries using `pip`:
 
-R: Randomly populate the grid with live cells.
+bash
 
-S: Save the current pattern of live cells to a file.
+pip install pygame matplotlib -- example
 
-L: Load a saved pattern from a file.
 
-File I/O: Supports saving and loading patterns in a file for persistence.
 
-Requirements
-Python 3.x
 
-Pygame
 
-Matplotlib
 
-You can install the required libraries using pip:
-
-pip install pygame matplotlib
-How to Run the Game
+## How to Run the Game
 Clone this repository to your local machine:
 
 
 git clone https://github.com/yourusername/game-of-life.git
 cd game-of-life
-Run the life.py script:
+Run the script:
 
 
 python life.py --width 40 --height 20 --fps 6
-You can adjust the width, height, and fps using the command-line arguments.
+You can customize the game with these command-line arguments:
 
---width (default 40): The width of the grid.
+- width (default: 40): The number of columns in the grid.
 
---height (default 20): The height of the grid.
+- height (default: 20): The number of rows in the grid.
 
---fps (default 6): The frames per second of the simulation.
+- fps (default: 6): The frames per second for the simulation.
 
-How the Game Works
-Each cell in the grid can be in one of two states:
+## Rules of Life
 
-Alive (green cell)
+Each cell in the grid has 8 neighbors and follows these rules every generation:
 
-Dead (black cell)
+- Fewer than 2 live neighbors → Dies (under-population)
+- 2 or 3 live neighbors → Lives on
+- More than 3 live neighbors → Dies (over-population)
+- Exactly 3 live neighbors (if currently dead) → Becomes alive (reproduction)
 
-Rules for the Next Generation:
-A cell with fewer than 2 live neighbors dies (under-population).
+## Graphs
 
-A cell with 2 or 3 live neighbors stays alive.
+Two real-time graphs appear in the bottom-right corner of the screen:
 
-A cell with more than 3 live neighbors dies (over-population).
+- **FPS**: Frames per second – shows how fast the simulation is running.
+- **Population**: The number of currently alive cells in the grid.
 
-A dead cell with exactly 3 live neighbors becomes alive.
+These graphs update as the game progresses.
 
-The simulation is updated in real-time, with a graphical display of the grid and two graphs: FPS and Population.
+## Save and Load Patterns
 
-Graphs
-The simulation also includes two graphs displayed in the bottom-right corner:
+Use these keys to manage patterns:
 
-FPS (Frames per second): The number of frames the game can process per second.
-
-Population: The number of live cells in the grid at any given time.
-
-These graphs are updated in real-time as the simulation runs.
-
-Example Screenshots
-Game in Action
-
-FPS and Population Graph
-
-Save and Load Patterns
-You can save and load patterns using the following keys:
-
-S: Save the current pattern to a file named patterns.txt.
-
-L: Load a previously saved pattern from patterns.txt.
-
-Patterns are saved as a list of coordinates where live cells are located.
-
+- Press `S` to save the current pattern to `patterns.txt`.
+- Press `L` to load the saved pattern from `patterns.txt`.
+- Patterns are saved as coordinates of all currently live cells.
 
 
